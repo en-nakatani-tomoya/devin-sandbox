@@ -57,7 +57,9 @@ async def get_report(task_id: str):
     """
     Get the result of a previously submitted report task.
     """
-    task = process_report_task.AsyncResult(task_id)
+    from app.celery_worker.worker import celery_app
+    
+    task = celery_app.AsyncResult(task_id)
     
     if task.state == 'PENDING':
         return ReportResult(
@@ -74,7 +76,7 @@ async def get_report(task_id: str):
     else:
         return ReportResult(
             task_id=task_id,
-            result=task.result,
+            result=str(task.result),
             status="completed"
         )
 
