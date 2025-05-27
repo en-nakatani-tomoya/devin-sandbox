@@ -1,6 +1,6 @@
 """
-Task definitions for the API.
-This module defines the interface to Celery tasks.
+APIのタスク定義。
+このモジュールはCeleryタスクへのインターフェースを定義します。
 """
 
 from app.celery_worker.worker import celery_app
@@ -9,13 +9,13 @@ from app.celery_worker.worker import celery_app
 @celery_app.task(name="app.api.tasks.process_report_task")
 def process_report_task(query: str):
     """
-    Submit a task to process a report query.
+    レポートクエリを処理するタスクを送信します。
 
-    Args:
-        query: The investigation query string
+    引数:
+        query: 調査クエリ文字列
 
-    Returns:
-        The task object
+    戻り値:
+        タスクオブジェクト
     """
     from app.celery_worker.tasks import process_report
 

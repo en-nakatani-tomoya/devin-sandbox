@@ -1,6 +1,6 @@
 """
-Mock implementation of the OpenAI interface.
-This can be replaced with the actual OpenAI API implementation later.
+OpenAIインターフェースのモック実装。
+これは後で実際のOpenAI API実装に置き換えることができます。
 """
 
 import time
@@ -9,42 +9,40 @@ import random
 
 class OpenAIMock:
     """
-    Mock implementation of the OpenAI interface.
-    This class simulates the behavior of the OpenAI API for development
-    purposes.
+    OpenAIインターフェースのモック実装。
+    このクラスは開発目的のためにOpenAI APIの動作をシミュレートします。
     """
 
     def __init__(self):
-        """Initialize the mock OpenAI interface."""
+        """モックOpenAIインターフェースを初期化します。"""
         self.templates = [
-            "Based on our investigation of '{query}', we found the following results:\n\n"
-            "1. The primary factors involved are related to economic and environmental "
-            "considerations.\n"
-            "2. Recent studies suggest that this area requires further research.\n"
-            "3. Experts recommend a cautious approach to this topic.",
+            "「{query}」の調査に基づいて、以下の結果が見つかりました：\n\n"
+            "1. 関連する主な要因は経済的および環境的な考慮事項に関連しています。\n"
+            "2. 最近の研究では、この分野はさらなる研究が必要であることが示唆されています。\n"
+            "3. 専門家はこのトピックに対して慎重なアプローチを推奨しています。",
             
-            "Investigation results for '{query}':\n\n"
-            "Our analysis indicates several key findings:\n"
-            "- This is a complex issue with multiple stakeholders involved\n"
-            "- Historical data shows a pattern of increasing interest in this area\n"
-            "- Future developments will likely depend on regulatory changes",
+            "「{query}」の調査結果：\n\n"
+            "分析によると、いくつかの重要な発見があります：\n"
+            "- これは複数の利害関係者が関与する複雑な問題です\n"
+            "- 過去のデータはこの分野への関心が高まっているパターンを示しています\n"
+            "- 将来の発展は規制の変更に依存する可能性が高いです",
             
-            "Report on '{query}':\n\n"
-            "The investigation has concluded with these insights:\n"
-            "* There are significant opportunities for innovation in this space\n"
-            "* Challenges remain in terms of implementation and adoption\n"
-            "* A strategic approach is recommended for addressing these issues",
+            "「{query}」に関するレポート：\n\n"
+            "調査は以下の洞察で結論付けられました：\n"
+            "* この分野にはイノベーションの重要な機会があります\n"
+            "* 実装と採用に関しては課題が残っています\n"
+            "* これらの問題に対処するには戦略的なアプローチが推奨されます",
         ]
 
     def generate_report(self, query: str) -> str:
         """
-        Generate a mock report based on the query.
+        クエリに基づいてモックレポートを生成します。
 
-        Args:
-            query: The investigation query string
+        引数:
+            query: 調査クエリ文字列
 
-        Returns:
-            A mock report as a string
+        戻り値:
+            文字列としてのモックレポート
         """
         time.sleep(1)
 

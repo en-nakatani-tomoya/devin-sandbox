@@ -1,5 +1,5 @@
 """
-FastAPI application main module.
+FastAPIアプリケーションのメインモジュール。
 """
 
 from fastapi import FastAPI, BackgroundTasks, HTTPException
@@ -9,32 +9,32 @@ from typing import Dict, Any
 from app.api.tasks import process_report_task
 
 app = FastAPI(
-    title="Report API", description="API for processing investigation reports"
+    title="レポートAPI", description="調査レポート処理のためのAPI"
 )
 
 
 class ReportRequest(BaseModel):
-    """Request model for the report endpoint."""
+    """レポートエンドポイントのリクエストモデル。"""
 
     query: str
 
     class Config:
         schema_extra = {
             "example": {
-                "query": "Investigate the impact of climate change on polar bears"
+                "query": "気候変動がホッキョクグマに与える影響を調査する"
             }
         }
 
 
 class ReportResponse(BaseModel):
-    """Response model for the report endpoint."""
+    """レポートエンドポイントのレスポンスモデル。"""
 
     task_id: str
     message: str
 
 
 class ReportResult(BaseModel):
-    """Result model for completed reports."""
+    """完了したレポートの結果モデル。"""
 
     task_id: str
     result: str
@@ -46,24 +46,24 @@ async def create_report(
     request: ReportRequest, background_tasks: BackgroundTasks
 ):
     """
-    Create a new investigation report based on the provided query.
-    The report will be processed in the background.
+    提供されたクエリに基づいて新しい調査レポートを作成します。
+    レポートはバックグラウンドで処理されます。
     """
     if not request.query:
-        raise HTTPException(status_code=400, detail="Query cannot be empty")
+        raise HTTPException(status_code=400, detail="クエリを空にすることはできません")
 
     task_id = process_report_task.delay(request.query)
 
     return ReportResponse(
         task_id=str(task_id),
-        message="Report request submitted successfully. Check status with the task ID.",
+        message="レポートリクエストが正常に送信されました。タスクIDでステータスを確認してください。",
     )
 
 
 @app.get("/report/{task_id}", response_model=ReportResult)
 async def get_report(task_id: str):
     """
-    Get the result of a previously submitted report task.
+    以前に送信されたレポートタスクの結果を取得します。
     """
     from app.celery_worker.worker import celery_app
 
@@ -72,7 +72,7 @@ async def get_report(task_id: str):
     if task.state == "PENDING":
         return ReportResult(
             task_id=task_id,
-            result="Task is still processing",
+            result="タスクはまだ処理中です",
             status="pending",
         )
     elif task.state == "FAILURE":
@@ -107,5 +107,5 @@ async def get_report(task_id: str):
 
 @app.get("/health")
 async def health_check():
-    """Health check endpoint."""
+    """ヘルスチェックエンドポイント。"""
     return {"status": "ok"}

@@ -1,5 +1,5 @@
 """
-Celery tasks for processing reports.
+レポート処理のためのCeleryタスク。
 """
 
 from app.celery_worker.worker import celery_app
@@ -10,13 +10,13 @@ import time
 @celery_app.task(name="app.celery_worker.tasks.process_report")
 def process_report(query: str) -> str:
     """
-    Process a report query using the OpenAI API (mock for now).
+    OpenAI API（現在はモック）を使用してレポートクエリを処理します。
 
-    Args:
-        query: The investigation query string
+    引数:
+        query: 調査クエリ文字列
 
-    Returns:
-        The investigation results as a string
+    戻り値:
+        文字列としての調査結果
     """
     time.sleep(2)
 

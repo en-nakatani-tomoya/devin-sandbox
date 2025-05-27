@@ -1,5 +1,5 @@
 """
-Celery worker configuration.
+Celeryワーカーの設定。
 """
 
 from celery import Celery
@@ -15,7 +15,7 @@ celery_app = Celery(
 )
 
 celery_app.conf.update(
-    result_expires=3600,  # Results expire after 1 hour
+    result_expires=3600,  # 結果は1時間後に期限切れになります
     task_serializer="json",
     accept_content=["json"],
     result_serializer="json",
