@@ -74,9 +74,20 @@ async def get_report(task_id: str):
             status="failed"
         )
     else:
+        result = task.result
+        if isinstance(result, list) and len(result) > 0 and isinstance(result[0], list) and len(result[0]) > 0:
+            inner_task_id = result[0][0]
+            inner_task = celery_app.AsyncResult(inner_task_id)
+            if inner_task.state == 'SUCCESS':
+                return ReportResult(
+                    task_id=task_id,
+                    result=str(inner_task.result),
+                    status="completed"
+                )
+        
         return ReportResult(
             task_id=task_id,
-            result=str(task.result),
+            result=str(result),
             status="completed"
         )
 
