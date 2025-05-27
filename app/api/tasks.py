@@ -5,6 +5,7 @@ This module defines the interface to Celery tasks.
 from app.celery_worker.worker import celery_app
 
 
+@celery_app.task(name='app.api.tasks.process_report_task')
 def process_report_task(query: str):
     """
     Submit a task to process a report query.
@@ -15,4 +16,5 @@ def process_report_task(query: str):
     Returns:
         The task object
     """
-    return celery_app.send_task('app.celery_worker.tasks.process_report', args=[query])
+    from app.celery_worker.tasks import process_report
+    return process_report.delay(query)
