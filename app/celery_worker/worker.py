@@ -10,7 +10,7 @@ celery_app = Celery(
     'report_worker',
     broker=redis_url,
     backend=redis_url,
-    include=['app.celery_worker.tasks']
+    include=['app.celery_worker.tasks', 'app.api.tasks']
 )
 
 celery_app.conf.update(
