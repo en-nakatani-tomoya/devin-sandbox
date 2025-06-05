@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-memory-test-2gb
+    environment:
+      MYSQL_ROOT_PASSWORD: testpassword
+      MYSQL_DATABASE: memory_test
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: testpass
+    ports:
+      - "3308:3306"
+    volumes:
+      - mysql_data_2gb:/var/lib/mysql
+      - ./init-mysql.sql:/docker-entrypoint-initdb.d/init.sql
+    command: --innodb-buffer-pool-size=512M --innodb-log-file-size=256M
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+    networks:
+      - db-network-2gb
+
+  postgres:
+    image: postgres:15
+    container_name: postgres-memory-test-2gb
+    environment:
+      POSTGRES_DB: memory_test
+      POSTGRES_USER: testuser
+      POSTGRES_PASSWORD: testpass
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_data_2gb:/var/lib/postgresql/data
+      - ./init-postgres.sql:/docker-entrypoint-initdb.d/init.sql
+    command: postgres -c shared_buffers=256MB -c work_mem=16MB -c maintenance_work_mem=256MB
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+    networks:
+      - db-network-2gb
+
+volumes:
+  mysql_data_2gb:
+  postgres_data_2gb:
+
+networks:
+  db-network-2gb:
+    driver: bridge
