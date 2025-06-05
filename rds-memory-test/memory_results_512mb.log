@@ -1,0 +1,51 @@
+Starting memory monitoring for 512mb containers...
+=== Memory Monitoring (512mb limit) ===
+Monitoring for 60 seconds with 10s intervals
+
+--- 2025-06-05 10:07:35 ---
+MySQL monitoring error: 1227 (42000): Access denied; you need (at least one of) the PROCESS privilege(s) for this operation
+Docker Container Memory Usage:
+  mysql-memory-test: 363.5MiB / 512MiB (70.99%)
+  postgres-memory-test: 16.43MiB / 512MiB (3.21%)
+PostgreSQL Database Size: 7933 kB
+PostgreSQL Table Size: 456 kB
+
+--- 2025-06-05 10:07:47 ---
+MySQL monitoring error: 1227 (42000): Access denied; you need (at least one of) the PROCESS privilege(s) for this operation
+Docker Container Memory Usage:
+  mysql-memory-test: 363.5MiB / 512MiB (71.00%)
+  postgres-memory-test: 16.48MiB / 512MiB (3.22%)
+PostgreSQL Database Size: 7941 kB
+PostgreSQL Table Size: 456 kB
+
+--- 2025-06-05 10:08:00 ---
+MySQL monitoring error: 1227 (42000): Access denied; you need (at least one of) the PROCESS privilege(s) for this operation
+Docker Container Memory Usage:
+  mysql-memory-test: 363.5MiB / 512MiB (71.00%)
+  postgres-memory-test: 16.75MiB / 512MiB (3.27%)
+PostgreSQL Database Size: 7941 kB
+PostgreSQL Table Size: 456 kB
+
+--- 2025-06-05 10:08:13 ---
+MySQL monitoring error: 1227 (42000): Access denied; you need (at least one of) the PROCESS privilege(s) for this operation
+Docker Container Memory Usage:
+  mysql-memory-test: 363.5MiB / 512MiB (70.99%)
+  postgres-memory-test: 17.34MiB / 512MiB (3.39%)
+PostgreSQL Database Size: 7941 kB
+PostgreSQL Table Size: 456 kB
+
+--- 2025-06-05 10:08:25 ---
+MySQL monitoring error: 1227 (42000): Access denied; you need (at least one of) the PROCESS privilege(s) for this operation
+Docker Container Memory Usage:
+  mysql-memory-test: 363.5MiB / 512MiB (70.99%)
+  postgres-memory-test: 17.34MiB / 512MiB (3.39%)
+PostgreSQL Database Size: 7941 kB
+PostgreSQL Table Size: 456 kB
+
+Results saved to memory_results_512mb.json
+
+=== Summary ===
+Final Memory Usage:
+  mysql-memory-test: 363.5MiB / 512MiB (70.99%)
+  postgres-memory-test: 17.34MiB / 512MiB (3.39%)
+PostgreSQL Table Size: 456 kB

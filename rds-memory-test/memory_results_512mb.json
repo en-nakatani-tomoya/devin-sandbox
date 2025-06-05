@@ -1,0 +1,102 @@
+[
+  {
+    "timestamp": "2025-06-05 10:07:35",
+    "docker_stats": {
+      "mysql-memory-test": {
+        "memory_usage": "363.5MiB / 512MiB",
+        "memory_percent": "70.99%"
+      },
+      "postgres-memory-test": {
+        "memory_usage": "16.43MiB / 512MiB",
+        "memory_percent": "3.21%"
+      }
+    },
+    "mysql_info": {},
+    "postgres_info": {
+      "database_size": "7933 kB",
+      "table_size": "456 kB",
+      "shared_buffers": "64MB",
+      "work_mem": "4MB"
+    }
+  },
+  {
+    "timestamp": "2025-06-05 10:07:47",
+    "docker_stats": {
+      "mysql-memory-test": {
+        "memory_usage": "363.5MiB / 512MiB",
+        "memory_percent": "71.00%"
+      },
+      "postgres-memory-test": {
+        "memory_usage": "16.48MiB / 512MiB",
+        "memory_percent": "3.22%"
+      }
+    },
+    "mysql_info": {},
+    "postgres_info": {
+      "database_size": "7941 kB",
+      "table_size": "456 kB",
+      "shared_buffers": "64MB",
+      "work_mem": "4MB"
+    }
+  },
+  {
+    "timestamp": "2025-06-05 10:08:00",
+    "docker_stats": {
+      "mysql-memory-test": {
+        "memory_usage": "363.5MiB / 512MiB",
+        "memory_percent": "71.00%"
+      },
+      "postgres-memory-test": {
+        "memory_usage": "16.75MiB / 512MiB",
+        "memory_percent": "3.27%"
+      }
+    },
+    "mysql_info": {},
+    "postgres_info": {
+      "database_size": "7941 kB",
+      "table_size": "456 kB",
+      "shared_buffers": "64MB",
+      "work_mem": "4MB"
+    }
+  },
+  {
+    "timestamp": "2025-06-05 10:08:13",
+    "docker_stats": {
+      "mysql-memory-test": {
+        "memory_usage": "363.5MiB / 512MiB",
+        "memory_percent": "70.99%"
+      },
+      "postgres-memory-test": {
+        "memory_usage": "17.34MiB / 512MiB",
+        "memory_percent": "3.39%"
+      }
+    },
+    "mysql_info": {},
+    "postgres_info": {
+      "database_size": "7941 kB",
+      "table_size": "456 kB",
+      "shared_buffers": "64MB",
+      "work_mem": "4MB"
+    }
+  },
+  {
+    "timestamp": "2025-06-05 10:08:25",
+    "docker_stats": {
+      "mysql-memory-test": {
+        "memory_usage": "363.5MiB / 512MiB",
+        "memory_percent": "70.99%"
+      },
+      "postgres-memory-test": {
+        "memory_usage": "17.34MiB / 512MiB",
+        "memory_percent": "3.39%"
+      }
+    },
+    "mysql_info": {},
+    "postgres_info": {
+      "database_size": "7941 kB",
+      "table_size": "456 kB",
+      "shared_buffers": "64MB",
+      "work_mem": "4MB"
+    }
+  }
+]

@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-memory-test
+    environment:
+      MYSQL_ROOT_PASSWORD: testpassword
+      MYSQL_DATABASE: memory_test
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: testpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init-mysql.sql:/docker-entrypoint-initdb.d/init.sql
+    command: --innodb-buffer-pool-size=128M --innodb-log-file-size=64M
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    networks:
+      - db-network
+
+  postgres:
+    image: postgres:15
+    container_name: postgres-memory-test
+    environment:
+      POSTGRES_DB: memory_test
+      POSTGRES_USER: testuser
+      POSTGRES_PASSWORD: testpass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-postgres.sql:/docker-entrypoint-initdb.d/init.sql
+    command: postgres -c shared_buffers=64MB -c work_mem=4MB -c maintenance_work_mem=64MB
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    networks:
+      - db-network
+
+  monitoring:
+    image: alpine:latest
+    container_name: memory-monitor
+    command: sh -c "while true; do echo '=== Memory Stats ===' && date && docker stats --no-stream --format 'table {{.Container}}\t{{.MemUsage}}\t{{.MemPerc}}' mysql-memory-test postgres-memory-test; sleep 10; done"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - mysql
+      - postgres
+    networks:
+      - db-network
+
+volumes:
+  mysql_data:
+  postgres_data:
+
+networks:
+  db-network:
+    driver: bridge
